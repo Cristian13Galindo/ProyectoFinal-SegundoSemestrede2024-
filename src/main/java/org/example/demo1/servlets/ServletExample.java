@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import org.example.demo1.logic.Car;
 import org.example.demo1.logic.HandlingCar;
 
 @WebServlet(name = "ServletExample", value = "/ServletExample")
