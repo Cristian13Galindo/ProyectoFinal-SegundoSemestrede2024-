@@ -31,15 +31,31 @@ public class Car {
         return plate;
     }
 
+    public void setPlate(String plate) {
+        this.plate = plate;
+    }
+
     public String getBrand() {
         return brand;
     }
 
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
     public int getYear() {
-        return  year;
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public String getColor() {
         return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }
