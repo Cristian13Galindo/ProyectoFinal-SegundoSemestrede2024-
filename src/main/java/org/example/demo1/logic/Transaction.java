@@ -1,6 +1,5 @@
 package org.example.demo1.logic;
 
-// Clase Transacción (Transaction)
 import java.util.Date;
 
 public class Transaction {
@@ -12,6 +11,16 @@ public class Transaction {
     private String descripcion;
     private String ubicacion;
     private String metodoPago;
+
+    // Constructor
+    public Transaction(String id, double monto, String fecha, String descripcion, String ubicacion, String metodoPago) {
+        this.id = id;
+        this.monto = monto;
+        this.fecha = new Date(fecha);
+        this.descripcion = descripcion;
+        this.ubicacion = ubicacion;
+        this.metodoPago = metodoPago;
+    }
 
     // Registra una nueva transacción
     public void registrarTransaccion() {

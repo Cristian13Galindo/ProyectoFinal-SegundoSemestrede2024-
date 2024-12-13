@@ -11,6 +11,15 @@ public class Budget {
     private Date fechaFin;
     private String tipoPeriodo;
 
+    // Constructor
+    public Budget(String id, double montoTotal, String fechaInicio, String fechaFin, String tipoPeriodo) {
+        this.id = id;
+        this.montoTotal = montoTotal;
+        this.fechaInicio = new Date(fechaInicio);
+        this.fechaFin = new Date(fechaFin);
+        this.tipoPeriodo = tipoPeriodo;
+    }
+
     // Establece el monto total del presupuesto
     public void establecerMontoTotal(double monto) {
         this.montoTotal = monto;
