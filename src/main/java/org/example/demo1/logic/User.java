@@ -1,25 +1,34 @@
 package org.example.demo1.logic;
 
-// Clase Usuario (User)
 public class User {
-    private String id;
-    private String nombre;
-    private String email;
-    private String contraseña;
+    private String nameUser;
+    private String password;
 
-    public void registrarse() {
-        // Implementación del método
+    public User() {
+        super();
     }
 
-    public void iniciarSesion() {
-        // Implementación del método
+    public User(String nameUser, String password) {
+        super();
+        this.nameUser = nameUser;
+        this.password = password;
     }
 
-    public void cerrarSesion() {
-        // Implementación del método
+    public String getNameUser() {
+        return nameUser;
+    }
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void actualizarPerfil() {
-        // Implementación del método
+    @Override
+    public String toString() {
+        return "UserDTO [nameUser=" + nameUser + ", password=" + password + "]";
     }
 }

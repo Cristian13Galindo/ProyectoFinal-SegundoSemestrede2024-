@@ -16,7 +16,7 @@ public class Budget {
     }
 
     public void definirPeriodo(String tipo) {
-        // Implementación del método
+        this.tipoPeriodo = tipo;
     }
 
     public void asignarMontoCategoria(Category category, double monto) {
