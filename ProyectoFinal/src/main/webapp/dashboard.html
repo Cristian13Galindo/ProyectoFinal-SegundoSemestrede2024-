@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Gestión de Presupuestos</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Archivo de JavaScript -->
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="text-center">Gestión de Presupuestos</h1>
+  <p class="text-center">Administra tus presupuestos, asigna rubros y realiza un seguimiento de tus transacciones.</p>
+  <hr>
+
+  <!-- Formulario para Crear Presupuestos -->
+  <h2>Crear Presupuesto</h2>
+  <form id="budgetForm">
+    <!-- Tipo de Período -->
+    <div class="mb-3">
+      <label for="periodType" class="form-label">Tipo de Período</label>
+      <select id="periodType" name="periodType" class="form-select" required>
+        <option value="" disabled selected>Selecciona un tipo</option>
+        <option value="semanal">Semanal</option>
+        <option value="mensual">Mensual</option>
+        <option value="trimestral">Trimestral</option>
+        <option value="semestral">Semestral</option>
+        <option value="anual">Anual</option>
+      </select>
+    </div>
+
+    <!-- Fechas de Período -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="periodStart" class="form-label">Inicio del Período</label>
+        <input type="date" id="periodStart" name="periodStart" class="form-control" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="periodEnd" class="form-label">Fin del Período</label>
+        <input type="date" id="periodEnd" name="periodEnd" class="form-control" required>
+      </div>
+    </div>
+
+    <!-- Monto Total -->
+    <div class="mb-3">
+      <label for="totalAmount" class="form-label">Monto Total</label>
+      <input type="number" step="0.01" id="totalAmount" name="totalAmount" class="form-control" placeholder="Ejemplo: 5000.00" required>
+    </div>
+
+    <!-- Selección de Categorías y Asignación de Valores -->
+    <div class="mb-3">
+      <label for="categorySelect" class="form-label">Añadir Categorías al Presupuesto</label>
+      <div class="d-flex align-items-center mb-2">
+        <select id="categorySelect" class="form-select me-2">
+          <option value="" disabled selected>Selecciona una categoría</option>
+          <!-- Opciones cargadas dinámicamente -->
+        </select>
+        <input type="number" step="0.01" id="allocatedAmount" class="form-control me-2" placeholder="Monto Asignado" >
+        <input type="number" step="0.01" id="threshold" class="form-control me-2" placeholder="Umbral (%)" >
+        <button type="button" class="btn btn-secondary" onclick="addCategory()">Añadir</button>
+      </div>
+      <small class="text-muted">Selecciona una categoría, asigna un monto y un umbral para añadir al presupuesto.</small>
+    </div>
+
+    <!-- Contenedor de Categorías Asignadas -->
+    <div id="categoriesContainer" class="mb-3">
+      <h6>Categorías Asignadas:</h6>
+      <ul class="list-group">
+        <!-- Las categorías añadidas aparecerán aquí -->
+      </ul>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Crear Presupuesto</button>
+  </form>
+
+  <hr>
+
+  <!-- Sección para Presupuestos Existentes -->
+  <h2>Presupuestos Existentes</h2>
+  <div id="budgetsList" class="row mt-3">
+    <!-- Aquí se cargarán los presupuestos dinámicamente -->
+  </div>
+
+  <hr>
+
+  <!-- Sección para Registrar Transacciones -->
+  <h2>Registrar Transacción</h2>
+  <form id="transactionForm">
+    <!-- Selección de Presupuesto -->
+    <div class="mb-3">
+      <label for="transactionBudget" class="form-label">Selecciona un Presupuesto</label>
+      <select id="transactionBudget" name="transactionBudget" class="form-select" required>
+        <option value="" disabled selected>Selecciona un presupuesto</option>
+      </select>
+    </div>
+
+    <!-- Selección de Categoría dentro del Presupuesto -->
+    <div class="mb-3">
+      <label for="transactionCategory" class="form-label">Selecciona una Categoría</label>
+      <select id="transactionCategory" name="transactionCategory" class="form-select" required>
+        <option value="" disabled selected>Selecciona una categoría</option>
+      </select>
+    </div>
+
+    <!-- Monto de la Transacción -->
+    <div class="mb-3">
+      <label for="transactionAmount" class="form-label">Monto de la Transacción</label>
+      <input type="number" step="0.01" id="transactionAmount" name="transactionAmount" class="form-control" placeholder="Ejemplo: 100.00" required>
+    </div>
+    <button type="submit" class="btn btn-success w-100">Registrar Transacción</button>
+  </form>
+
+  <hr>
+
+  <!-- Sección para Visualizar Transacciones -->
+  <h2>Transacciones Registradas</h2>
+  <div class="mb-3">
+    <label for="transactionBudgetFilter" class="form-label">Selecciona un Presupuesto</label>
+    <select id="transactionBudgetFilter" class="form-select">
+      <option value="" disabled selected>Selecciona un presupuesto</option>
+    </select>
+  </div>
+  <button type="button" class="btn btn-primary mb-3" onclick="filterTransactions()">Ver Transacciones</button>
+
+  <div id="transactionsContainer" class="row mt-3">
+    <!-- Aquí se cargarán dinámicamente las transacciones -->
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
